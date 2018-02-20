@@ -1,16 +1,18 @@
 app.controller('LoginController', function($scope, $http) {
 
-    var userDataUrl = 'http://localhost:8080/users';
+    var userDataUrl = '/users';
     var data = {};
 
     $scope.checkUserDetails = function() {
         data = {
-            name: $scope.username,
-            password: $scope.password
-        }
-        console.log(data)
+            user : {
+                name: $scope.username,
+                password: $scope.password
+            }
+        };
+        console.log(data);
         checkUser();
-    }
+    };
 
     var checkUser = function() {
         $http.post(userDataUrl, data)
@@ -21,4 +23,4 @@ app.controller('LoginController', function($scope, $http) {
         }
     }
 
-})
+});
