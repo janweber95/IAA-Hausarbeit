@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticketsystem</title>
+    <style type="text/css">
+        body{
+            width: 1200px;
+            margin: 0 auto;
+            background-color: #b3d7ff;
+        }
+    </style>
+</head>
+<body>
+<div class="col-sm-8 col-sm-push-4">
+    <h2>Ticketsystem</h2>
+    <p>Bitte melden Sie sich mit Ihrem Benutzernamen und Ihrem Passwort für an!</p>
+    <p>Für weitere Informationen kontaktieen Sie ihren Presidente JP</p>
+    <p class="text-danger">Zugang nur für autorisierte Entwickler.</p>
+</div>
+<div class="col-sm-4 col-sm-pull-8">
+    <form novalidate>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ng-model="username" type="text" id="username" name="username" class="form-control" placeholder="Enter username" autofocus="true" autocomplete="off" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input ng-model="password" type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="checkUserDetails()">Log In</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
