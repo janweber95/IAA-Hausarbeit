@@ -1,8 +1,12 @@
 package de.nordakademie.defecttracker.model;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import static de.nordakademie.defecttracker.model.DefectStatus.CREATED;
 
@@ -12,9 +16,10 @@ public class Defect {
     private Long id;
     private String title;
     private String description;
-    private LocalDateTime creationDate;
+    private Date creationDate;
     private User creator;
     private DefectStatus status = CREATED;
+    private List<DefectChange> changes = new ArrayList<>();
 
     @Id
     @GeneratedValue
@@ -26,6 +31,7 @@ public class Defect {
         this.id = id;
     }
 
+    @Column(nullable = false)
     public String getTitle() {
         return title;
     }
@@ -34,7 +40,7 @@ public class Defect {
         this.title = title;
     }
 
-    @Column(length = 20000)
+    @Column(length = 20000, nullable = false)
     public String getDescription() {
         return description;
     }
@@ -43,15 +49,18 @@ public class Defect {
         this.description = description;
     }
 
-    public LocalDateTime getCreationDate() {
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @JoinColumn(nullable = false, updatable = false)
     public User getCreator() {
         return creator;
     }
@@ -61,12 +70,26 @@ public class Defect {
     }
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     public DefectStatus getStatus() {
         return status;
     }
 
     public void setStatus(DefectStatus status) {
         this.status = status;
+    }
+
+    @ElementCollection
+    public List<DefectChange> getChanges() {
+        return changes;
+    }
+
+    public void setChanges(List<DefectChange> changes) {
+        this.changes = changes;
+    }
+
+    public void addDefectChange(DefectChange defectChange) {
+        changes.add(defectChange);
     }
 
     @Override

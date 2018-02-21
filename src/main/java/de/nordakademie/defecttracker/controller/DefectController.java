@@ -2,14 +2,13 @@ package de.nordakademie.defecttracker.controller;
 
 
 import de.nordakademie.defecttracker.model.Defect;
+import de.nordakademie.defecttracker.model.DefectChange;
+import de.nordakademie.defecttracker.service.exception.DefectChangeNotAllowedException;
 import de.nordakademie.defecttracker.service.DefectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -86,4 +85,17 @@ public class DefectController {
         return ResponseEntity.status(NOT_FOUND).build();
     }
 
+    @RequestMapping(value = "/{id}", method = POST)
+    public ResponseEntity addDefectChange(@PathVariable Long id, @RequestBody DefectChange defectChange) {
+        Defect defect = defectService.findDefectById(id);
+        if (defect != null) {
+            try {
+                defectService.addDefectChangeToDefect(defect, defectChange);
+                return ResponseEntity.status(OK).build();
+            } catch (DefectChangeNotAllowedException e) {
+                return ResponseEntity.status(BAD_REQUEST).body(e.getMessage());
+            }
+        }
+        return ResponseEntity.status(NOT_FOUND).build();
+    }
 }

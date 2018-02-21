@@ -2,6 +2,8 @@ package de.nordakademie.defecttracker.service;
 
 
 import de.nordakademie.defecttracker.model.Defect;
+import de.nordakademie.defecttracker.model.DefectChange;
+import de.nordakademie.defecttracker.service.exception.DefectChangeNotAllowedException;
 
 import java.util.List;
 
@@ -35,4 +37,13 @@ public interface DefectService {
      * @param defect the defect to delete.
      */
     void deleteDefect(Defect defect);
+
+    /**
+     * Adds a given defect change to a given defect.
+     *
+     * @param defect       the defect to which the defect change should be added.
+     * @param defectChange the defect change to add to the defect.
+     * @throws DefectChangeNotAllowedException if status change is invalid or user has no permission for status change.
+     */
+    void addDefectChangeToDefect(Defect defect, DefectChange defectChange) throws DefectChangeNotAllowedException;
 }

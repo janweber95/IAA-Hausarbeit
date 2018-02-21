@@ -1,15 +1,19 @@
 package de.nordakademie.defecttracker.model;
 
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Immutable;
 
+import javax.persistence.*;
+import java.util.Date;
+
+@Immutable
 @Embeddable
 public class DefectChange {
 
     private String comment;
     private User editor;
-    private LocalDateTime changeTime;
+    private Date changeTime;
     private DefectStatus previousStatus;
     private DefectStatus newStatus;
 
@@ -23,6 +27,7 @@ public class DefectChange {
     }
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     public User getEditor() {
         return editor;
     }
@@ -31,15 +36,18 @@ public class DefectChange {
         this.editor = editor;
     }
 
-    public LocalDateTime getChangeTime() {
+    @CreationTimestamp
+    @Column(nullable = false)
+    public Date getChangeTime() {
         return changeTime;
     }
 
-    public void setChangeTime(LocalDateTime changeTime) {
+    public void setChangeTime(Date changeTime) {
         this.changeTime = changeTime;
     }
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     public DefectStatus getPreviousStatus() {
         return previousStatus;
     }
@@ -49,6 +57,7 @@ public class DefectChange {
     }
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     public DefectStatus getNewStatus() {
         return newStatus;
     }
