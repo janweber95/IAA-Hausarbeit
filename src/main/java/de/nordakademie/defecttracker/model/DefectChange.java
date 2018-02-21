@@ -1,9 +1,7 @@
 package de.nordakademie.defecttracker.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Embeddable
@@ -12,6 +10,8 @@ public class DefectChange {
     private String comment;
     private User editor;
     private LocalDateTime changeTime;
+    private DefectStatus previousStatus;
+    private DefectStatus newStatus;
 
     @Column(length = 5000)
     public String getComment() {
@@ -37,6 +37,24 @@ public class DefectChange {
 
     public void setChangeTime(LocalDateTime changeTime) {
         this.changeTime = changeTime;
+    }
+
+    @Enumerated(EnumType.STRING)
+    public DefectStatus getPreviousStatus() {
+        return previousStatus;
+    }
+
+    public void setPreviousStatus(DefectStatus previousStatus) {
+        this.previousStatus = previousStatus;
+    }
+
+    @Enumerated(EnumType.STRING)
+    public DefectStatus getNewStatus() {
+        return newStatus;
+    }
+
+    public void setNewStatus(DefectStatus newStatus) {
+        this.newStatus = newStatus;
     }
 
     @Override
