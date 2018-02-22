@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Issue Overview</title>
+
+    <style type="text/css">
+
+        .page-content{
+            padding: 40px;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <table datatable="ng" class="table row-border hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titel</th>
+            <th>Beschreibung</th>
+            <th>Erstellungsdatum</th>
+            <th>Autor</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="defect in defects">
+            <td>{{ defect.id }}</td>
+            <td>{{ defect.title }}</td>
+            <td>{{ defect.description }}</td>
+            <td>{{ defect.creationDate }}</td>
+            <td>{{ defect.creator.username }}</td>
+            <td>{{ defect.status }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
