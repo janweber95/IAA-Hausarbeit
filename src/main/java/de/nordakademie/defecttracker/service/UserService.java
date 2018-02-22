@@ -6,6 +6,14 @@ import de.nordakademie.defecttracker.model.User;
 public interface UserService {
 
     /**
+     * Persists a given user in the database.
+     *
+     * @param user the user to save.
+     * @return the persisted user.
+     */
+    User saveUser(User user);
+
+    /**
      * Retrieves a user by its username.
      *
      * @param username the identifier.
