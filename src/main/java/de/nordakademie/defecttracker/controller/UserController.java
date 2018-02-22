@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
@@ -23,6 +21,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Checks if transmitted user data is valid (=login).
+     *
+     * @param user the user to check.
+     * @return OK or NOT_FOUND if user date is invalid.
+     */
     @RequestMapping(value = "/login", method = POST)
     public ResponseEntity login(@RequestBody User user) {
         User existingUser = userService.findUserByUsername(user.getUsername());
@@ -32,14 +36,20 @@ public class UserController {
         return ResponseEntity.status(OK).body(existingUser);
     }
 
+    /**
+     * Persists a given user in the database.
+     *
+     * @param user the user to save.
+     * @return status CREATED or BAD_REQUEST if a user with the same username already exists.
+     */
     @RequestMapping(method = POST)
     public ResponseEntity createUser(@RequestBody User user) {
         User existingUser = userService.findUserByUsername(user.getUsername());
         if (existingUser != null) {
             return ResponseEntity.status(BAD_REQUEST).body("Es existiert bereits ein Benutzer mit dem Benutzername '"
-                + user.getUsername() + "'!");
+                    + user.getUsername() + "'!");
         }
         User createdUser = userService.saveUser(user);
-        return ResponseEntity.status(OK).body(createdUser);
+        return ResponseEntity.status(CREATED).body(createdUser);
     }
 }

@@ -3,12 +3,15 @@ package de.nordakademie.defecttracker.controller;
 
 import de.nordakademie.defecttracker.model.Defect;
 import de.nordakademie.defecttracker.model.DefectChange;
-import de.nordakademie.defecttracker.service.exception.DefectChangeNotAllowedException;
 import de.nordakademie.defecttracker.service.DefectService;
+import de.nordakademie.defecttracker.service.exception.DefectChangeNotAllowedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -53,7 +56,7 @@ public class DefectController {
      * Updates a given defect in the database.
      *
      * @param defect the defect to update.
-     * @param id the id of the defect to update.
+     * @param id     the id of the defect to update.
      * @return status NO_CONTENT or BAD_REQUEST if the defect does not exist or saving failed.
      */
     @RequestMapping(value = "/{id}", method = PUT)
@@ -85,6 +88,13 @@ public class DefectController {
         return ResponseEntity.status(NOT_FOUND).build();
     }
 
+    /**
+     * Add a defect change to a defect.
+     *
+     * @param id           the if of the defect where the defect change should be added.
+     * @param defectChange the defect change to add.
+     * @return return OK, BAD_REQUEST if adding was not possible or NOT_FOUND if no defect was found with given id.
+     */
     @RequestMapping(value = "/{id}", method = POST)
     public ResponseEntity addDefectChange(@PathVariable Long id, @RequestBody DefectChange defectChange) {
         Defect defect = defectService.findDefectById(id);
