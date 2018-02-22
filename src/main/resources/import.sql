@@ -1,0 +1,5 @@
+INSERT INTO USER (ID, USERNAME, PASSWORD) VALUES (1, 'Harald', '123456');
+INSERT INTO USER (ID, USERNAME, PASSWORD) VALUES (2, 'Werner', 'fussball');
+INSERT INTO USER (ID, USERNAME, PASSWORD) VALUES (3, 'Friedrich', 'Holsten');
+
+INSERT INTO DEFECT (ID, TITLE, DESCRIPTION, CREATION_DATE, CREATOR_ID, STATUS) VALUES (4, 'Lorem Ipsum', 'Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans. Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht – ein geradezu unorthographisches Leben.', '2018-02-22 11:55:00', 1, 'CREATED');
