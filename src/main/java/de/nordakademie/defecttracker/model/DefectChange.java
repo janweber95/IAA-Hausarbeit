@@ -7,6 +7,11 @@ import org.hibernate.annotations.Immutable;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Defect change entity.
+ *
+ * @author Jan-Philipp Weber
+ */
 @Immutable
 @Embeddable
 public class DefectChange {

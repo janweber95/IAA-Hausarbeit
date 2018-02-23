@@ -3,6 +3,11 @@ package de.nordakademie.defecttracker.service;
 
 import de.nordakademie.defecttracker.model.User;
 
+/**
+ * Service interface for user entities.
+ *
+ * @author Jan-Philipp Weber
+ */
 public interface UserService {
 
     /**

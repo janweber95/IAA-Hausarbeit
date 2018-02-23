@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.http.HttpStatus.*;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+/**
+ * Controller for user entities.
+ *
+ * @author Jan-Philipp Weber
+ */
 @RestController
 @RequestMapping("/users")
 @Transactional

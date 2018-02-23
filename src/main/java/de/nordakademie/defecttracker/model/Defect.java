@@ -10,6 +10,11 @@ import java.util.List;
 
 import static de.nordakademie.defecttracker.model.DefectStatus.CREATED;
 
+/**
+ * Defect entity.
+ *
+ * @author Jan-Philipp Weber
+ */
 @Entity
 public class Defect {
 

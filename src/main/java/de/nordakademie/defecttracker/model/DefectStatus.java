@@ -1,6 +1,10 @@
 package de.nordakademie.defecttracker.model;
 
-
+/**
+ * Defect status enumeration.
+ *
+ * @author Jan-Philipp Weber
+ */
 public enum DefectStatus {
 
     CREATED("Angelegt"),
@@ -19,5 +23,4 @@ public enum DefectStatus {
     public String getName() {
         return name;
     }
-
 }
