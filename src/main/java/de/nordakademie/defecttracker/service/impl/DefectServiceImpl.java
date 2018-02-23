@@ -16,6 +16,11 @@ import java.util.List;
 
 import static de.nordakademie.defecttracker.model.DefectStatus.*;
 
+/**
+ * Service implementation for defect entities.
+ *
+ * @author Jan-Philipp Weber
+ */
 @Service
 @Transactional
 public class DefectServiceImpl implements DefectService {
@@ -24,13 +29,18 @@ public class DefectServiceImpl implements DefectService {
     private DefectDAO defectDAO;
 
     @Override
-    public List<Defect> listDefects() {
+    public void saveDefect(Defect defect) {
+        defectDAO.save(defect);
+    }
+
+    @Override
+    public List<Defect> findAllDefects() {
         return defectDAO.findAll();
     }
 
     @Override
-    public void saveDefect(Defect defect) {
-        defectDAO.save(defect);
+    public List<Defect> findAllNonClosedDefects() {
+        return defectDAO.findAllNonClosed();
     }
 
     @Override

@@ -8,16 +8,18 @@ import de.nordakademie.defecttracker.service.exception.DefectChangeNotAllowedExc
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
+/**
+ * Controller for defect entities.
+ *
+ * @author Jan-Philipp Weber
+ */
 @RestController
 @RequestMapping("/defects")
 @Transactional
@@ -29,11 +31,15 @@ public class DefectController {
     /**
      * Lists all defects.
      *
+     * @param excludeClosed specifies, if only defects that are not closed should be returned.
      * @return a list of defect entities. An empty list is returned if no defect is persisted.
      */
     @RequestMapping(method = GET)
-    public List<Defect> listDefects() {
-        return defectService.listDefects();
+    public List<Defect> listDefects(@RequestParam(value = "excludeclosed", required = false) boolean excludeClosed) {
+        if (excludeClosed) {
+            return defectService.findAllNonClosedDefects();
+        }
+        return defectService.findAllDefects();
     }
 
     /**

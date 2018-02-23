@@ -7,14 +7,12 @@ import de.nordakademie.defecttracker.service.exception.DefectChangeNotAllowedExc
 
 import java.util.List;
 
+/**
+ * Service interface for defect entities.
+ *
+ * @author Jan-Philipp Weber
+ */
 public interface DefectService {
-
-    /**
-     * Lists all defects.
-     *
-     * @return a list of defect entities. An empty list is returned if no defect is persisted.
-     */
-    List<Defect> listDefects();
 
     /**
      * Persists a given defect in the database.
@@ -24,12 +22,27 @@ public interface DefectService {
     void saveDefect(Defect defect);
 
     /**
+     * Lists all defects.
+     *
+     * @return a list of defect entities. An empty list is returned if no defect is persisted.
+     */
+    List<Defect> findAllDefects();
+
+    /**
      * Retrieves a defect by its id.
      *
      * @param id the identifier.
      * @return the found defect or {@code null} if no defect was found with the given identifier.
      */
     Defect findDefectById(Long id);
+
+    /**
+     * Lists all defects that are not closed.
+     *
+     * @return a list of defect entities with a status that is not {@code CLOSED}.
+     * An empty list is returned if no defect that is not closed was found.
+     */
+    List<Defect> findAllNonClosedDefects();
 
     /**
      * Removes a given defect from the database.
