@@ -1,23 +1,26 @@
 app.controller('HomeController', function($scope, $http, $location) {
 
     var defectsUrl = '/defects';
-    var advancedDefectsUrl = '';
+    var excludeClosed = false;
 
-    $http.get(defectsUrl)
-        .then(function successCallback(data) {
-            console.log(data);
-            $scope.defects = data.data;
-            console .log();
-        }), function errorCallback(data, status , header) {
-        console.error(data, status, header);
+    var getData = function (excludeClosed) {
+
+        $http.get(defectsUrl,{params:{excludeclosed: excludeClosed}})
+            .then(function successCallback(response) {
+                console.log(response);
+                $scope.defects = response.data;
+            }), function errorCallback(data, status, header) {
+            console.error(data, status, header);
+        }
     }
+    getData(excludeClosed);
 
     $scope.createDefect = function () {
         $location.path( '/ticket' );
     }
 
     $scope.hideClosedDefects = function () {
-
+        getData(true);
     }
 
 
