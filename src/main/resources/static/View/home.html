@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Felerübersicht</title>
+    <title>Defects</title>
 
     <style type="text/css">
 
@@ -13,6 +13,18 @@
     </style>
 </head>
 <body>
+<div class="btn-group">
+    <button type="button"
+            class="btn btn-primary"
+            ng-click="createDefect()">
+        Ticket erstellen
+    </button>
+    <button type="button"
+            class="btn btn-info"
+            ng-click="hideClosedDefects()">
+        Geschlossene Tickets ausblenden
+    </button>
+</div>
 <div>
     <table datatable="ng" class="table row-border hover">
         <thead>

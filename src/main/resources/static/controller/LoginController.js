@@ -21,12 +21,11 @@ app.controller('LoginController', function($scope, $http,$location) {
                 switchToHome();
             }), function errorCallback(data, status , header) {
             console.error(data, status, header);
-            switchToHome();
+            alert("Benutzername oder Passwort wurde falsch eingegeben. Bitte versuchen Sie es erneut!")
         }
     }
 
     var switchToHome = function () {
-            console.log("TestSwitch")
             $location.path( '/home' );
         };
 });
