@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Defect</title>
+
+    <style type="text/css">
+        .page-content{
+            padding: 40px;
+        }
+        .title{
+            width: 500px;
+        }
+        .description{
+            width: 700px;
+        }
+    </style>
 </head>
 <body>
-
+<form>
+    <div class="form-group">
+        <label>Titel</label>
+        <input type="text"
+               class="form-control title"
+               aria-describedby="Titel des Defects">
+    </div>
+    <div class="form-group">
+        <label>Beschreibung des Defects</label>
+        <textarea class="form-control description" rows="8"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Ticket erstellen</button>
+</form>
 </body>
 </html>
