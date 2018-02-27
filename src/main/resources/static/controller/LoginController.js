@@ -1,23 +1,21 @@
-app.controller('LoginController', function($scope, $http,$location) {
+app.controller('LoginController', function($scope, $http,$location, storage) {
 
-    var userDataUrl = '/users';
-    var data = {};
+    var userDataUrl = '/users/login';
+    var user = {};
 
     $scope.checkUserDetails = function() {
-        data = {
-            "user" : {
-                "name": $scope.username,
+            user = {
+                "username": $scope.username,
                 "password": $scope.password
             }
-        };
-        console.log(data);
         checkUser();
     };
 
     var checkUser = function() {
-        $http.post(userDataUrl, data)
-            .then(function successCallback(data) {
-                console.log(data);
+        $http.post(userDataUrl, user)
+            .then(function successCallback(response) {
+                console.log(response);
+                storage.setUser(response.data);
                 switchToHome();
             }), function errorCallback(data, status , header) {
             console.error(data, status, header);

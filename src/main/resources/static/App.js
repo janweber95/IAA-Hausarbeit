@@ -1,5 +1,5 @@
 
-    var app = angular.module("myApp", ["ngRoute", "datatables"]);
+    var app = angular.module("myApp", ["ngRoute", "datatables", "service.storage"]);
     app.config(function($routeProvider) {
         $routeProvider
             .when("/", {

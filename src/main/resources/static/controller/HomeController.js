@@ -4,7 +4,6 @@ app.controller('HomeController', function($scope, $http, $location) {
     var excludeClosed = false;
 
     var getData = function (excludeClosed) {
-
         $http.get(defectsUrl,{params:{excludeclosed: excludeClosed}})
             .then(function successCallback(response) {
                 console.log(response);
