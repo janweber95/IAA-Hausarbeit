@@ -1,12 +1,13 @@
 app.controller('TicketController', function($scope, $http, $location, storage) {
 
     var defectsUrl = '/defects';
-    var user = storage.getuser();
-    console.log(user);
+    var recentUser = storage.getuser();
+    $scope.defect = {};
+
+    $scope.defect.creator = recentUser;
 
     $scope.createDefect = function () {
-        console.log($scope.defect);
-        JSON.stringify($scope.defect);
+        angular.toJson($scope.defect);
         console.log($scope.defect);
         $http.post(defectsUrl, $scope.defect)
             .then(function successCallback(response) {
