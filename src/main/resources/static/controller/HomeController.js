@@ -1,7 +1,7 @@
 app.controller('HomeController', function($scope, $http, $location) {
 
     var defectsUrl = '/defects';
-    var excludeClosed = false;
+    $scope.excludeClosed = false;
 
     var getData = function (excludeClosed) {
         $http.get(defectsUrl,{params:{excludeclosed: excludeClosed}})
@@ -12,14 +12,20 @@ app.controller('HomeController', function($scope, $http, $location) {
             console.error(data, status, header);
         }
     }
-    getData(excludeClosed);
+    getData($scope.excludeClosed);
 
     $scope.createDefect = function () {
-        $location.path( '/ticket' );
+        $location.path( '/defect' );
     }
 
     $scope.hideClosedDefects = function () {
+        $scope.excludeClosed = true;
         getData(true);
+    }
+
+    $scope.showClosedDefects = function () {
+        $scope.excludeClosed = false
+        getData(false);
     }
 
 
