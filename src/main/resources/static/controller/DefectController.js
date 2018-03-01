@@ -1,7 +1,7 @@
-app.controller('TicketController', function($scope, $http, $location, storage) {
+app.controller('DefectController', function($scope, $http, $location, userStorage) {
 
     var defectsUrl = '/defects';
-    var recentUser = storage.getuser();
+    var recentUser = userStorage.getuser();
     $scope.defect = {};
 
     $scope.defect.creator = recentUser;
