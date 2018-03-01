@@ -17,20 +17,22 @@
     </style>
 </head>
 <body>
-    <form>
+    <form ng-submit="createDefect()">
         <div class="form-group">
             <label>Titel</label>
             <input type="text"
                    class="form-control title"
                    aria-describedby="Titel des Defects"
-                   ng-model="defect.title">
+                   ng-model="defect.title"
+                   ng-minlength="3"
+                   required>
         </div>
         <div class="form-group">
             <label>Beschreibung des Defects</label>
-            <textarea class="form-control description" rows="8" ng-model="defect.description"></textarea>
+            <textarea class="form-control description" rows="8" ng-model="defect.description" ng-minlength="1" required></textarea>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-success" ng-click="createDefect()">Ticket erstellen</button>
+            <button type="submit" class="btn btn-success">Ticket erstellen</button>
             <button class="btn btn-primary" ng-click="switchToHome()">Zurück zur vorherigen Seite</button>
         </div>
 
