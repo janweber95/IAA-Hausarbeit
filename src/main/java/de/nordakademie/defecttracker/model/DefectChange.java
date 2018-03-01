@@ -1,6 +1,7 @@
 package de.nordakademie.defecttracker.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Immutable;
 
@@ -43,6 +44,7 @@ public class DefectChange {
 
     @CreationTimestamp
     @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH:mm")
     public Date getChangeTime() {
         return changeTime;
     }
