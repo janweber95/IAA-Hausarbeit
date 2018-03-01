@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrierung</title>
+    <style type="text/css">
+        .page-content{
+            padding: 100px;
+            background-color: #b3d7ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="col-sm-4 col-sm-pull-8">
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input ng-model="user.username" type="text" id="username" name="username" class="form-control" placeholder="Enter username" autofocus="true" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input ng-model="user.password" type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input ng-model="user.email" type="email" id="email" name="email" class="form-control" placeholder="Enter E-Mail" required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" ng-click="createUser()">Registrieren</button>
+                <button class="btn btn-primary" ng-click="switchToLogin()">Zurück zur vorherigen Seite</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
