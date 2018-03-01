@@ -18,4 +18,12 @@ public interface UserDAO extends JpaRepository<User, Long> {
      * @return the found user or {@code null} if no user was found with the given identifier.
      */
     User findByUsername(String username);
+
+    /**
+     * Retrieves a user by its e-mail address.
+     *
+     * @param email the identifier.
+     * @return the found user or {@code null} if no user was found with the given identifier.
+     */
+    User findByEmail(String email);
 }

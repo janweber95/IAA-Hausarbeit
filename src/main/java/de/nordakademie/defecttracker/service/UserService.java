@@ -2,6 +2,7 @@ package de.nordakademie.defecttracker.service;
 
 
 import de.nordakademie.defecttracker.model.User;
+import de.nordakademie.defecttracker.service.exception.UserCreationException;
 
 /**
  * Service interface for user entities.
@@ -16,7 +17,7 @@ public interface UserService {
      * @param user the user to save.
      * @return the persisted user.
      */
-    User saveUser(User user);
+    User saveUser(User user) throws UserCreationException;
 
     /**
      * Retrieves a user by its username.

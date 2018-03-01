@@ -3,6 +3,7 @@ package de.nordakademie.defecttracker.model;
 
 import org.hibernate.annotations.NaturalId;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,6 +19,8 @@ public class User {
     private Long id;
     private String username;
     private String password;
+    private String email;
+    private String name;
 
     @Id
     @GeneratedValue
@@ -44,6 +47,24 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Column(unique = true)
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Column(name = "FULL_NAME")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

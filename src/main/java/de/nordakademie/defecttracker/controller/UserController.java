@@ -3,6 +3,7 @@ package de.nordakademie.defecttracker.controller;
 
 import de.nordakademie.defecttracker.model.User;
 import de.nordakademie.defecttracker.service.UserService;
+import de.nordakademie.defecttracker.service.exception.UserCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +28,7 @@ public class UserController {
     private UserService userService;
 
     /**
-     * Checks if transmitted user data is valid (=login).
+     * Checks if transmitted user data is valid (= login).
      *
      * @param user the user to check.
      * @return OK or NOT_FOUND if user date is invalid.
@@ -49,12 +50,11 @@ public class UserController {
      */
     @RequestMapping(method = POST)
     public ResponseEntity createUser(@RequestBody User user) {
-        User existingUser = userService.findUserByUsername(user.getUsername());
-        if (existingUser != null) {
-            return ResponseEntity.status(BAD_REQUEST).body("Es existiert bereits ein Benutzer mit dem Benutzername '"
-                    + user.getUsername() + "'!");
+        try {
+            User createdUser = userService.saveUser(user);
+            return ResponseEntity.status(CREATED).body(createdUser);
+        } catch (UserCreationException e) {
+            return ResponseEntity.status(BAD_REQUEST).body(e.getMessage());
         }
-        User createdUser = userService.saveUser(user);
-        return ResponseEntity.status(CREATED).body(createdUser);
     }
 }

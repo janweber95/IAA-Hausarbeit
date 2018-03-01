@@ -1,6 +1,6 @@
-INSERT INTO USER (ID, USERNAME, PASSWORD) VALUES (1, 'Harald', '123456');
-INSERT INTO USER (ID, USERNAME, PASSWORD) VALUES (2, 'Werner', 'fussball');
-INSERT INTO USER (ID, USERNAME, PASSWORD) VALUES (3, 'Friedrich', 'Holsten');
+INSERT INTO USER (ID, USERNAME, PASSWORD, EMAIL, FULL_NAME) VALUES (1, 'Harald', '123456', 'h.baecker@outlook.com', 'Harald Bäcker');
+INSERT INTO USER (ID, USERNAME, PASSWORD, EMAIL, FULL_NAME) VALUES (2, 'Werner', 'fussball', 'werner64@web.de', 'Werner Müller');
+INSERT INTO USER (ID, USERNAME, PASSWORD, EMAIL, FULL_NAME) VALUES (3, 'Friedrich', 'Holsten', 'friedrich.otto@gmx.de', 'Friedrich Otto');
 
 INSERT INTO DEFECT (ID, TITLE, DESCRIPTION, CREATION_DATE, CREATOR_ID, STATUS) VALUES (4, 'Kein Titel', 'Beim Anzeigen von geschlossenen Defects wird der Titel nicht mehr angezeigt', '2018-02-19 11:55:00', 1, 'CREATED');
 INSERT INTO DEFECT (ID, TITLE, DESCRIPTION, CREATION_DATE, CREATOR_ID, STATUS) VALUES (5, 'Loginprobleme', 'User 3 und 4 funktionieren nicht', '2018-02-20 16:45:00', 2, 'REJECTED');
