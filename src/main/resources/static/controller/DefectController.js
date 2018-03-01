@@ -11,11 +11,16 @@ app.controller('DefectController', function($scope, $http, $location, userStorag
         console.log($scope.defect);
         $http.post(defectsUrl, $scope.defect)
             .then(function successCallback(response) {
-              alert("Das Ticket wurde erfolgreich angelegt!")
+              alert("Das Ticket wurde erfolgreich angelegt!");
+              switchToHome();
             }, function errorCallback (data, status, header) {
                 console.log(data, status, header);
+                alert("Das Ticket konnte nicht angelegt werden. Bitte kontrollieren Sie ihre Eingaben!")
             })
-        $location.path("/home");
-    }
+    };
+
+    $scope.switchToHome = function () {
+        $location.path("/home")
+    };
 
 })
