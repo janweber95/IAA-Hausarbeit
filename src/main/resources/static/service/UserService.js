@@ -1,6 +1,6 @@
 angular.module('service.storage', [])
-    .factory('storage', function () {
-        var recentUser = {};
+    .factory('userStorage', function () {
+        var recentUser = null;
 
         var get = function () {
             return recentUser;
@@ -12,7 +12,7 @@ angular.module('service.storage', [])
         };
 
         var remove = function () {
-            recentUser = {};
+            recentUser = null;
         };
 
         // Reveal public API.

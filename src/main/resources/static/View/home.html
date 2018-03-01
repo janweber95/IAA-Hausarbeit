@@ -21,8 +21,15 @@
     </button>
     <button type="button"
             class="btn btn-info"
-            ng-click="hideClosedDefects()">
+            ng-click="hideClosedDefects()"
+            ng-if="excludeClosed === false">
         Geschlossene Tickets ausblenden
+    </button>
+    <button type="button"
+            class="btn btn-info"
+            ng-click="showClosedDefects()"
+            ng-if="excludeClosed">
+        Geschlossene Tickets einblenden
     </button>
 </div>
 <div>
