@@ -21,14 +21,15 @@
     <form novalidate>
         <div class="form-group">
             <label for="username">Username</label>
-            <input ng-model="username" type="text" id="username" name="username" class="form-control" placeholder="Enter username" autofocus="true" autocomplete="off" required>
+            <input ng-model="user.username" type="text" id="username" name="username" class="form-control" placeholder="Enter username" autofocus="true" autocomplete="off" required>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input ng-model="password" type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
+            <input ng-model="user.password" type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary" ng-click="checkUserDetails()">Log In</button>
+            <button class="btn btn-primary" ng-click="checkUserData()">Anmelden</button>
+            <button class="btn btn-success" ng-click="createUser()">Registrieren</button>
         </div>
     </form>
 </div>

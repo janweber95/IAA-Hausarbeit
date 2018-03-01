@@ -10,9 +10,15 @@
                 templateUrl : "View/home.html",
                 controller : "HomeController"
             })
-            .when("/ticket", {
-                templateUrl : "View/ticket.html",
-                controller : "TicketController"
+            .when("/defect", {
+                templateUrl : "View/defect.html",
+                controller : "DefectController"
+            }).when("/defectdetails", {
+            templateUrl : "View/defectdetails.html",
+            controller : "DefectDetailsController"
+            }).when("/registration", {
+            templateUrl : "View/registration.html",
+            controller : "RegistrationController"
             }).otherwise({
             redirectTo: "/"
         });
