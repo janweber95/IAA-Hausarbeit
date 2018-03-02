@@ -1,4 +1,4 @@
-app.controller('HomeController', function($scope, $http, $location) {
+app.controller('HomeController', function($scope, $http, $location, defectService) {
 
     var defectsUrl = '/defects';
     $scope.excludeClosed = false;
@@ -26,6 +26,11 @@ app.controller('HomeController', function($scope, $http, $location) {
     $scope.showClosedDefects = function () {
         $scope.excludeClosed = false
         getData(false);
+    };
+
+    $scope.switchToDetails = function (defect) {
+        defectService.setDefect(defect);
+        $location.path('/defectdetails')
     };
 
 

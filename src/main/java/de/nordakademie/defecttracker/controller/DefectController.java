@@ -23,7 +23,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RestController
 @RequestMapping("/defects")
 @Transactional
-public class DefectController {
+public class  DefectController {
 
     @Autowired
     private DefectService defectService;
