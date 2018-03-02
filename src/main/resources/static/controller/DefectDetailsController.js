@@ -1,7 +1,7 @@
 app.controller('DefectDetailsController', function($scope, $http, $location, defectService) {
 
     var defectstatusUrl = '/defectstatus'
-    $scope.defects = defectService.getDefect();
+    $scope.defect = defectService.getDefect();
 
     var getData = function () {
         $http.get(defectstatusUrl)

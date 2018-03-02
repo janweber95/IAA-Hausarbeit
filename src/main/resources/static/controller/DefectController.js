@@ -8,7 +8,6 @@ app.controller('DefectController', function($scope, $http, $location, userServic
 
     $scope.createDefect = function () {
         angular.toJson($scope.defect);
-        console.log($scope.defect);
         $http.post(defectsUrl, $scope.defect)
             .then(function successCallback(response) {
               alert("Das Ticket wurde erfolgreich angelegt!");
