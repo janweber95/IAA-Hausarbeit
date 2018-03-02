@@ -10,23 +10,23 @@ app.controller('HomeController', function($scope, $http, $location) {
                 $scope.defects = response.data;
             }), function errorCallback(data, status, header) {
             console.error(data, status, header);
-        }
-    }
+        };
+    };
     getData($scope.excludeClosed);
 
     $scope.createDefect = function () {
         $location.path( '/defect' );
-    }
+    };
 
     $scope.hideClosedDefects = function () {
         $scope.excludeClosed = true;
         getData(true);
-    }
+    };
 
     $scope.showClosedDefects = function () {
         $scope.excludeClosed = false
         getData(false);
-    }
+    };
 
 
 })

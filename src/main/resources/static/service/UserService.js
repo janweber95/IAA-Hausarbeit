@@ -1,5 +1,5 @@
-angular.module('service.storage', [])
-    .factory('userStorage', function () {
+angular.module('service.user', [])
+    .factory('userService', function () {
         var recentUser = null;
 
         var get = function () {
