@@ -5,48 +5,99 @@
     <title>DefectDetail</title>
     <style type="text/css">
         .page-content {
-            padding: 40px;
+            padding: 80px;
         }
     </style>
 </head>
 <body>
-    <form ng-submit="submitChanges()">
-        <div class="form-group">
-            <label>Id</label>
-            <input type="number" class="form-control" ng-model="defect.id" ng-disabled="true">
+    <h1>Ticketbearbeitung</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-8">
+            <form ng-submit="submitChanges()">
+                <div class="form-group">
+                    <label for="defectDetailId">Id</label>
+                    <input type="number"
+                           class="form-control"
+                           id="defectDetailId"
+                           ng-model="defect.id"
+                           ng-disabled="true">
+                </div>
+                <div class="form-group">
+                    <label for ="defectDetailTitle">Betreff</label>
+                    <input type="text"
+                           class="form-control"
+                           id="defectDetailTitle"
+                           ng-model="defect.title"
+                           ng-disabled="true">
+                </div>
+                <div class="form-group">
+                    <label for="defectDetailCreator">Ersteller</label>
+                    <input type="text"
+                           class="form-control"
+                           id="defectDetailCreator"
+                           ng-model="defect.creator.username"
+                           ng-disabled="true">
+                </div>
+                <div class="form-group">
+                    <label for="defectDetailDate">Erstellt</label>
+                    <input type="text"
+                           class="form-control"
+                           id="defectDetailDate"
+                           ng-model="defect.creationDate"
+                           ng-disabled="true">
+                </div>
+                <div class="form-group">
+                    <label for="defectDetailDescription">Beschreibung</label>
+                    <textarea type="text"
+                              class="form-control"
+                              id="defectDetailDescription"
+                              ng-model="defect.description"
+                              ng-disabled="true"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="defectDetailStatus">Status</label>
+                    <input type="text"
+                           class="form-control"
+                           id="defectDetailStatus"
+                           ng-model="defect.status"
+                           ng-disabled="true">
+                </div>
+                <hr>
+                <div class="btn-group">
+                    <button type="button"
+                            class="btn btn-warning"
+                            ng-if="openDefect"
+                            ng-click="editDefect()">
+                        Ticket auf Bearbeitung setzen.
+                    </button>
+                    <button type="button"
+                            class="btn btn-success"
+                            ng-if="closeDefect"
+                            ng-click="endEditDefect()">
+                        Ticket Bearbeitung abschließen.
+                    </button>
+                    <button type="button"
+                            class="btn btn-danger"
+                            ng-if="reopenDefect"
+                            ng-click="closeDefect()">
+                        Ticket wiedereröffnen oder schließen
+                    </button>
+                    <button class="btn btn-primary"
+                            ng-click="switchToHome()">
+                        Zurück zur vorherigen Seite
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label>Betreff</label>
-            <input type="text" class="form-control" ng-model="defect.title" ng-disabled="true">
-        </div>
-        <div class="form-group">
-            <label>Ersteller</label>
-            <input type="text" class="form-control" ng-model="defect.creator.username" ng-disabled="true">
-        </div>
-        <div class="form-group">
-            <label>Erstellt</label>
-            <input type="text" class="form-control" ng-model="defect.creationDate" ng-disabled="true">
-        </div>
-        <div class="form-group">
-            <label>Beschreibung</label>
-            <textarea type="text" class="form-control" ng-model="defect.description" ng ng-disabled="true"></textarea>
-        </div>
-        <div class="form-group">
-            <label>Status</label>
-            <textarea type="text" class="form-control" ng-model="defect.status" ng ng-disabled="true"></textarea>
-        </div>
-        <hr>
-        <div class="form-group">
-            <div class="dropdown">
-                <select name="dropdownStatus" id="dropdownStatus" ng-model="selectedStatus">
-                    <option ng-repeat="status in defectstatus" value="{{status}}">{{status}}</option>
-                </select>
+        <div class="col-sm-4">
+            <h4>Verlauf des Tickets</h4>
+            <hr>
+            <div class="form-group" ng-repeat="change in previousChanges">
+                <label>Änderung</label>
+                <input type="text" value="{{change.editor}}:  {{change.newStatus}}">
             </div>
         </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Ticket erstellen</button>
-            <button class="btn btn-primary" ng-click="switchToHome()">Zurück zur vorherigen Seite</button>
-        </div>
-    </form>
+    </div>
 </body>
 </html>
