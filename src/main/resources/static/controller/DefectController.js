@@ -1,10 +1,13 @@
+/**
+ * Defect Controller.
+ *
+ * @author Jan-Philipp Weber
+ */
 app.controller('DefectController', function($scope, $http, $location, userService) {
 
     var defectsUrl = '/defects';
-    var recentUser = userService.getuser();
     $scope.defect = {};
-
-    $scope.defect.creator = recentUser;
+    $scope.defect.creator = userService.getuser();
 
     $scope.createDefect = function () {
         angular.toJson($scope.defect);
@@ -19,7 +22,6 @@ app.controller('DefectController', function($scope, $http, $location, userServic
     };
 
     $scope.switchToHome = function () {
-        $location.path("/home")
+        $location.path("/home");
     };
-
-})
+});

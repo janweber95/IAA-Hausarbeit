@@ -1,3 +1,9 @@
+
+/**
+ * Home Controller.
+ *
+ * @author Jan-Philipp Weber
+ */
 app.controller('HomeController', function($scope, $http, $location, defectService) {
 
     var defectsUrl = '/defects';
@@ -6,11 +12,10 @@ app.controller('HomeController', function($scope, $http, $location, defectServic
     var getData = function (excludeClosed) {
         $http.get(defectsUrl,{params:{excludeclosed: excludeClosed}})
             .then(function successCallback(response) {
-                console.log(response);
                 $scope.defects = response.data;
-            }), function errorCallback(data, status, header) {
+            }, function errorCallback(data, status, header) {
             console.error(data, status, header);
-        };
+        });
     };
     getData($scope.excludeClosed);
 
@@ -24,14 +29,12 @@ app.controller('HomeController', function($scope, $http, $location, defectServic
     };
 
     $scope.showClosedDefects = function () {
-        $scope.excludeClosed = false
+        $scope.excludeClosed = false;
         getData(false);
     };
 
     $scope.switchToDetails = function (defect) {
         defectService.setDefect(defect);
-        $location.path('/defectdetails')
+        $location.path('/defectdetails');
     };
-
-
-})
+});

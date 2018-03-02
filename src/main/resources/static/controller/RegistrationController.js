@@ -1,21 +1,25 @@
-app.controller('RegistrationController', function($scope, $http,$location) {
 
-    var userDataUrl = '/users/login';
+/**
+ * Registration Controller.
+ *
+ * @author Jan-Philipp Weber
+ */
+app.controller('RegistrationController', function($scope, $http,$location, userService) {
 
-    $scope.checkUserData = function() {
+    var userDataUrl = '/users';
+
+    $scope.createUser = function() {
         $http.post(userDataUrl, angular.toJson($scope.user))
             .then(function successCallback(response) {
-                console.log(response);
-                userStorage.setUser(response.data);
-                this.switchToLogin();
+                userService.setUser(response.data);
+                switchToLogin();
             }, function errorCallback(data, status , header) {
             console.error(data, status, header);
             alert("Hoppla, bitte kontrollieren Sie Ihre Eingaben und versuchen Sie es erneut!")
         })
     };
 
-    $scope.switchToLogin = function () {
+    var switchToLogin = function () {
         $location.path("/login");
     };
-
 });
