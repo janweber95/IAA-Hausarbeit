@@ -1,5 +1,5 @@
 
-    var app = angular.module("myApp", ["ngRoute", "datatables", "service.user", "service.defect"]);
+    var app = angular.module("myApp", ["ngRoute", "datatables", "service.user", "service.defect", "service.defectStatus"]);
     app.config(function($routeProvider) {
         $routeProvider
             .when("/", {
@@ -19,6 +19,9 @@
             }).when("/registration", {
             templateUrl : "View/registration.html",
             controller : "RegistrationController"
+            }).when("/defectchange", {
+            templateUrl : "View/defectchange.html",
+            controller : "DefectChangeController"
             }).otherwise({
             redirectTo: "/"
         });

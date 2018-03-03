@@ -8,7 +8,6 @@ angular.module('service.user', [])
 
         var set = function (user) {
             recentUser = user;
-            console.log(user);
         };
 
         var remove = function () {
