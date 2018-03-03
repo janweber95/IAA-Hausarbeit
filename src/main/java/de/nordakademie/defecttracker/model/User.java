@@ -3,10 +3,7 @@ package de.nordakademie.defecttracker.model;
 
 import org.hibernate.annotations.NaturalId;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * User entity.
@@ -23,7 +20,14 @@ public class User {
     private String name;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "userIdGenerator"
+    )
+    @SequenceGenerator(
+            name = "userIdGenerator",
+            initialValue = 1000
+    )
     public Long getId() {
         return id;
     }
