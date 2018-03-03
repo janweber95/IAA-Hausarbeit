@@ -35,7 +35,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = POST)
     public ResponseEntity login(@RequestBody User user) {
         User existingUser = userService.findUserByUsername(user.getUsername());
-        boolean validLoginData = existingUser == null || !existingUser.getPassword().equals(user.getPassword());
+        boolean validLoginData = existingUser != null && existingUser.getPassword().equals(user.getPassword());
         return validLoginData ? ResponseEntity.status(OK).body(existingUser) : ResponseEntity.status(NOT_FOUND).build();
     }
 
