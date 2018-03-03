@@ -12,10 +12,11 @@ app.controller('RegistrationController', function($scope, $http,$location, userS
         $http.post(userDataUrl, angular.toJson($scope.user))
             .then(function successCallback(response) {
                 userService.setUser(response.data);
-                switchToLogin();
+                $scope.switchToLogin();
+                alert("Benutzer wurde erfolgreich angelegt");
             }, function errorCallback(data, status , header) {
             console.error(data, status, header);
-            alert("Hoppla, bitte kontrollieren Sie Ihre Eingaben und versuchen Sie es erneut!")
+            alert("Benutzername oder E-Mail existiert bereits!")
         })
     };
 

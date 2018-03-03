@@ -4,7 +4,7 @@
  *
  * @author Jan-Philipp Weber
  */
-app.controller('HomeController', function($scope, $http, $location, defectService) {
+app.controller('HomeController', function($scope, $http, $location, defectService, userService) {
 
     var defectsUrl = '/defects';
     $scope.excludeClosed = false;
@@ -31,6 +31,11 @@ app.controller('HomeController', function($scope, $http, $location, defectServic
     $scope.showClosedDefects = function () {
         $scope.excludeClosed = false;
         getData(false);
+    };
+
+    $scope.switchToLogin = function () {
+        $location.path("/login");
+        userService.removeUser();
     };
 
     $scope.switchToDetails = function (defect) {

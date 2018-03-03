@@ -12,26 +12,52 @@
 </head>
 <body>
     <div class="col-sm-4 col-sm-pull-8">
-        <form>
+        <form ng-submit="createUser()">
             <div class="form-group">
                 <label for="username">Benutzername</label>
-                <input ng-model="user.username" type="text" id="username" name="username" class="form-control" autofocus="true" required>
+                <input ng-model="user.username"
+                       type="text" id="username"
+                       name="username"
+                       class="form-control"
+                       autofocus="true"
+                       required>
             </div>
             <div class="form-group">
                 <label for="password">Passwort</label>
-                <input ng-model="user.password" type="password" id="password" name="password" class="form-control" required>
+                <input ng-model="user.password"
+                       type="password"
+                       id="password"
+                       name="password"
+                       class="form-control"
+                       required>
             </div>
             <div class="form-group">
                 <label for="email">E-Mail</label>
-                <input ng-model="user.email" type="email" id="email" name="email" class="form-control"required>
+                <input ng-model="user.email"
+                       type="email"
+                       id="email"
+                       name="email"
+                       class="form-control"
+                       required>
             </div>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input ng-model="user.name" type="text" id="name" name="name" class="form-control"required>
+                <input ng-model="user.name"
+                       type="text"
+                       id="name"
+                       name="name"
+                       class="form-control"
+                       required>
             </div>
             <div class="btn-group">
-                <button class="btn btn-success" ng-click="createUser()">Registrieren</button>
-                <button class="btn btn-primary" ng-click="switchToLogin()">Zurück zur vorherigen Seite</button>
+                <button type="submit"
+                        class="btn btn-success">
+                    Registrieren
+                </button>
+                <button class="btn btn-primary"
+                        ng-click="switchToLogin()">
+                    Zurück zur vorherigen Seite
+                </button>
             </div>
         </form>
     </div>
