@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 import static de.nordakademie.defecttracker.model.DefectStatus.*;
@@ -56,6 +57,7 @@ public class DefectServiceImpl implements DefectService {
     @Override
     public void addDefectChangeToDefect(Defect defect, DefectChange defectChange) throws DefectChangeNotAllowedException {
         defectChange.setPreviousStatus(defect.getStatus());
+        defectChange.setChangeTime(new Date());
         checkIfChangeIsValid(defect, defectChange);
         defect.addDefectChange(defectChange);
         defect.setStatus(defectChange.getNewStatus());
