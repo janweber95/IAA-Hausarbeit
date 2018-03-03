@@ -21,10 +21,14 @@ app.controller('DefectChangeController', function($scope, $http, $location, defe
         $http.post(defectChangeUrl+$scope.defect.id, angular.toJson($scope.defectChange))
             .then(function successCallback(response) {
                 alert("Ticket erfolgreich bearbeitet");
-                $scope.switchToDetail();
+                switchToHome();
             }, function errorCallback(data, status , header) {
                 console.error(data, status, header);
                 alert("Hoppla, bitte kontrollieren Sie Ihre Eingaben und versuchen Sie es erneut!");
             })
+    };
+
+    var switchToHome = function () {
+        $location.path("/home");
     };
 });

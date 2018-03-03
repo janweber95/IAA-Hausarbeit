@@ -42,6 +42,7 @@ app.controller('DefectDetailsController', function($scope, $http, $location, def
     $scope.switchToHome = function () {
         $location.path("/home");
         defectService.removeDefect();
+        defectStatusService.removeDefectStatus();
         setBooleans();
     };
 });
