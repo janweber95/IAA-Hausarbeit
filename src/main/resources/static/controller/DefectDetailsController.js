@@ -17,8 +17,10 @@ app.controller('DefectDetailsController', function($scope, $http, $location, def
         if($scope.defect.status === "CREATED" || $scope.defect.status === "REOPENED") {
             $scope.openDefect = true;
         }
-        if (recentUser === $scope.previousChanges.editor && $scope.previousChanges.status === "IN_PROCESS") {
-            $scope.closeDefect = true;
+        if ($scope.defect.status === "IN_PROCESS"){
+            if (JSON.stringify(recentUser) === JSON.stringify($scope.previousChanges[$scope.previousChanges.length-1].editor)) {
+                $scope.closeDefect = true;
+            }
         }
         if (($scope.defect.status === "RESOLVED" ||$scope.defect.status === "REJECTED") && JSON.stringify($scope.defect.creator) === JSON.stringify(recentUser)){
             $scope.reopenDefect = true;
