@@ -13,15 +13,15 @@ app.controller('DefectChangeController', function($scope, $http, $location, defe
     $scope.defectChange.previousStatus = $scope.defect.status;
 
     $scope.switchToDetail = function () {
-        $location.path("/defectdetail");
+        $location.path("/defectdetails");
     };
     
     $scope.changeDefect = function (status) {
         $scope.defectChange.newStatus = status;
         $http.post(defectChangeUrl+$scope.defect.id, angular.toJson($scope.defectChange))
             .then(function successCallback(response) {
-                alert("Die Änderung wurde erfolgreich durchgeführt");
-                switchToDetail();
+                alert("Ticket erfolgreich bearbeitet");
+                $scope.switchToDetail();
             }, function errorCallback(data, status , header) {
                 console.error(data, status, header);
                 alert("Hoppla, bitte kontrollieren Sie Ihre Eingaben und versuchen Sie es erneut!");

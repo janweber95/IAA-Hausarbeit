@@ -13,6 +13,7 @@
     <form>
         <div class="form-group" ng-repeat="change in defect.changes">
             <p>Bearbeiter: {{change.editor.username}}</p>
+            <p>Geändert: {{change.changeTime}}</p>
             <p>Ticket von {{change.previousStatus}} auf {{change.newStatus}} gesetzt.</p>
             <textarea class="form-control" readonly>{{change.comment}}</textarea>
             <hr>
