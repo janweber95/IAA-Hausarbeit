@@ -95,7 +95,9 @@
             <hr>
             <div class="form-group" ng-repeat="change in previousChanges">
                 <label>Änderung</label>
-                <input type="text" value="{{change.editor}}:  {{change.newStatus}}">
+                <p>Bearbeiter: {{change.editor.username}}</p>
+                <p>Ticket von {{change.previousStatus}} auf {{change.newStatus}} gesetzt.</p>
+                <hr>
             </div>
         </div>
     </div>
