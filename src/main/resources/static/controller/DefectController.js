@@ -14,7 +14,7 @@ app.controller('DefectController', function($scope, $http, $location, userServic
         $http.post(defectsUrl, $scope.defect)
             .then(function successCallback(response) {
               alert("Das Ticket wurde erfolgreich angelegt!");
-              switchToHome();
+              $scope.switchToHome();
             }, function errorCallback (data, status, header) {
                 console.log(data, status, header);
                 alert("Das Ticket konnte nicht angelegt werden. Bitte kontrollieren Sie ihre Eingaben!")

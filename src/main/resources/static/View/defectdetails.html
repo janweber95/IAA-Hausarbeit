@@ -13,7 +13,7 @@
     <h1>Ticketbearbeitung</h1>
     <hr>
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-7">
             <form ng-submit="submitChanges()">
                 <div class="form-group">
                     <label for="defectDetailId">Id</label>
@@ -90,13 +90,13 @@
                 </div>
             </form>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-5">
             <h4>Verlauf des Tickets</h4>
             <hr>
             <div class="form-group" ng-repeat="change in previousChanges">
-                <label>Änderung</label>
                 <p>Bearbeiter: {{change.editor.username}}</p>
                 <p>Ticket von {{change.previousStatus}} auf {{change.newStatus}} gesetzt.</p>
+                <textarea readonly class="form-control">{{change.comment}}</textarea>
                 <hr>
             </div>
         </div>
