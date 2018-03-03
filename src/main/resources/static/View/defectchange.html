@@ -13,37 +13,37 @@
     <form>
         <div class="form-group">
             <label for="changeComment">Kommentarfeld</label>
-            <textarea class="form-control" id="changeComment" rows="10"></textarea>
+            <textarea class="form-control" id="changeComment" rows="10" ng-model="defectChange.comment"></textarea>
         </div>
         <div class="btn-group">
             <button type="button"
                     class="btn btn-warning"
                     ng-if="changeStatus === 'open'"
-                    ng-click="changeDefect()">
+                    ng-click="changeDefect('IN_PROCESS')">
                 Ticket auf Bearbeitung setzen
             </button>
             <button type="button"
                     class="btn btn-success"
                     ng-if="changeStatus === 'closed'"
-                    ng-click="changeDefect()">
+                    ng-click="changeDefect('RESOLVED')">
                 Ticket auf gelöst setzen
             </button>
             <button type="button"
                     class="btn btn-danger"
                     ng-if="changeStatus === 'closed'"
-                    ng-click="changeDefect()">
+                    ng-click="changeDefect('REJECTED')">
                 Ticket auf Abgelehnt setzen
             </button>
             <button type="button"
                     class="btn btn-danger"
                     ng-if="changeStatus === 'reopen'"
-                    ng-click="changeDefect()">
+                    ng-click="changeDefect('REOPENED')">
                 Ticket erneut eröffnen
             </button>
             <button type="button"
                     class="btn btn-primary"
                     ng-if="changeStatus === 'reopen'"
-                    ng-click="changeDefect()">
+                    ng-click="changeDefect('CLOSED')">
                 Ticket schließen
             </button>
         </div>
