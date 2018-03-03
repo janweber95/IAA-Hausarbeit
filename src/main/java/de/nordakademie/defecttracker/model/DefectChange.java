@@ -32,8 +32,7 @@ public class DefectChange {
         this.comment = comment;
     }
 
-    @ManyToOne
-    @JoinColumn(nullable = false)
+    @ManyToOne(optional = false)
     public User getEditor() {
         return editor;
     }
@@ -43,6 +42,7 @@ public class DefectChange {
     }
 
     @CreationTimestamp
+    @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH:mm")
     public Date getChangeTime() {
         return changeTime;
