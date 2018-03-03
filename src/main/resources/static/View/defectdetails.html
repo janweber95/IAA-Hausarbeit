@@ -68,19 +68,19 @@
                     <button type="button"
                             class="btn btn-warning"
                             ng-if="openDefect"
-                            ng-click="editDefect()">
+                            ng-click="editDefect('open')">
                         Ticket auf Bearbeitung setzen.
                     </button>
                     <button type="button"
                             class="btn btn-success"
                             ng-if="closeDefect"
-                            ng-click="endEditDefect()">
+                            ng-click="editDefect('close')">
                         Ticket Bearbeitung abschließen.
                     </button>
                     <button type="button"
                             class="btn btn-danger"
                             ng-if="reopenDefect"
-                            ng-click="closeDefect()">
+                            ng-click="editDefect('reopen')">
                         Ticket wiedereröffnen oder schließen
                     </button>
                     <button class="btn btn-primary"

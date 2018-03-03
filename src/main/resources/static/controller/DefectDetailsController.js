@@ -4,9 +4,8 @@
  *
  * @author Jan-Philipp Weber
  */
-app.controller('DefectDetailsController', function($scope, $http, $location, defectService,userService) {
+app.controller('DefectDetailsController', function($scope, $http, $location, defectService,userService, defectStatusService) {
 
-    var defectstatusUrl = '/defectstatus'
     $scope.defect = defectService.getDefect();
     $scope.previousChanges = $scope.defect.changes;
     $scope.closeDefect = false;
@@ -14,17 +13,7 @@ app.controller('DefectDetailsController', function($scope, $http, $location, def
     $scope.reopenDefect = false;
     var recentUser = userService.getuser();
 
-    var getData = function () {
-        $http.get(defectstatusUrl)
-            .then(function successCallback(response) {
-                $scope.defectstatus = response.data;
-            }, function errorCallback(data, status, header) {
-            console.error(data, status, header);
-        });
-    };
-    getData();
-
-    var checkDataForAction = function () {
+    var checkDataForActions = function () {
         if($scope.defect.status === "CREATED" || $scope.defect.status === "REOPENED") {
             $scope.openDefect = true;
         }
@@ -35,13 +24,18 @@ app.controller('DefectDetailsController', function($scope, $http, $location, def
             $scope.reopenDefect = true;
         }
     };
-    checkDataForAction();
+    checkDataForActions();
+
+    $scope.editDefect = function (changestatus) {
+        defectStatusService.setDefectStatus(changestatus);
+        $location.path("/defectchange");
+    };
 
     var setBooleans = function () {
         $scope.openDefect = false;
         $scope.closeDefect = false;
         $scope.reopenDefect = false;
-    }
+    };
 
     $scope.switchToHome = function () {
         $location.path("/home");

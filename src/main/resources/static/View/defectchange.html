@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .page-content{
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="form-group">
+            <label for="changeComment">Kommentarfeld</label>
+            <textarea class="form-control" id="changeComment" rows="10"></textarea>
+        </div>
+        <div class="btn-group">
+            <button type="button"
+                    class="btn btn-warning"
+                    ng-if="changeStatus === 'open'"
+                    ng-click="changeDefect()">
+                Ticket auf Bearbeitung setzen
+            </button>
+            <button type="button"
+                    class="btn btn-success"
+                    ng-if="changeStatus === 'closed'"
+                    ng-click="changeDefect()">
+                Ticket auf gelöst setzen
+            </button>
+            <button type="button"
+                    class="btn btn-danger"
+                    ng-if="changeStatus === 'closed'"
+                    ng-click="changeDefect()">
+                Ticket auf Abgelehnt setzen
+            </button>
+            <button type="button"
+                    class="btn btn-danger"
+                    ng-if="changeStatus === 'reopen'"
+                    ng-click="changeDefect()">
+                Ticket erneut eröffnen
+            </button>
+            <button type="button"
+                    class="btn btn-primary"
+                    ng-if="changeStatus === 'reopen'"
+                    ng-click="changeDefect()">
+                Ticket schließen
+            </button>
+        </div>
+    </form>
+
+</body>
+</html>
