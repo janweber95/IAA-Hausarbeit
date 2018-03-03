@@ -56,7 +56,6 @@ public class Defect {
     }
 
     @CreationTimestamp
-    @Column(nullable = false, updatable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH:mm")
     public Date getCreationDate() {
         return creationDate;
@@ -66,8 +65,8 @@ public class Defect {
         this.creationDate = creationDate;
     }
 
-    @ManyToOne(optional = false)
-    @JoinColumn(nullable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(nullable = false)
     public User getCreator() {
         return creator;
     }

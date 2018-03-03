@@ -3,7 +3,6 @@ package de.nordakademie.defecttracker.controller;
 
 import de.nordakademie.defecttracker.model.User;
 import de.nordakademie.defecttracker.service.UserService;
-import de.nordakademie.defecttracker.service.exception.UserCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,10 +35,8 @@ public class UserController {
     @RequestMapping(value = "/login", method = POST)
     public ResponseEntity login(@RequestBody User user) {
         User existingUser = userService.findUserByUsername(user.getUsername());
-        if (existingUser == null || !existingUser.getPassword().equals(user.getPassword())) {
-            return ResponseEntity.status(NOT_FOUND).build();
-        }
-        return ResponseEntity.status(OK).body(existingUser);
+        boolean validLoginData = existingUser == null || !existingUser.getPassword().equals(user.getPassword());
+        return validLoginData ? ResponseEntity.status(OK).body(existingUser) : ResponseEntity.status(NOT_FOUND).build();
     }
 
     /**
@@ -53,7 +50,7 @@ public class UserController {
         try {
             User createdUser = userService.saveUser(user);
             return ResponseEntity.status(CREATED).body(createdUser);
-        } catch (UserCreationException e) {
+        } catch (Exception e) {
             return ResponseEntity.status(BAD_REQUEST).body(e.getMessage());
         }
     }

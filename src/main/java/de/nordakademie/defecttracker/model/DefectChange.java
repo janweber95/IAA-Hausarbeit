@@ -43,7 +43,6 @@ public class DefectChange {
     }
 
     @CreationTimestamp
-    @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy HH:mm")
     public Date getChangeTime() {
         return changeTime;

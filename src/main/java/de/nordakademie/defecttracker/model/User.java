@@ -30,6 +30,7 @@ public class User {
     }
 
     @NaturalId
+    @Column(nullable = false)
     public String getUsername() {
         return username;
     }
@@ -38,6 +39,7 @@ public class User {
         this.username = username;
     }
 
+    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
@@ -46,7 +48,7 @@ public class User {
         this.password = password;
     }
 
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     public String getEmail() {
         return email;
     }
@@ -55,7 +57,7 @@ public class User {
         this.email = email;
     }
 
-    @Column(name = "FULL_NAME")
+    @Column(name = "FULL_NAME", nullable = false)
     public String getName() {
         return name;
     }
