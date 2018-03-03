@@ -19,7 +19,7 @@ app.controller('RegistrationController', function($scope, $http,$location, userS
         })
     };
 
-    var switchToLogin = function () {
+    $scope.switchToLogin = function () {
         $location.path("/login");
     };
 });
