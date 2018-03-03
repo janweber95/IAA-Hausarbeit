@@ -29,13 +29,22 @@
         </div>
         <div class="form-group">
             <label>Beschreibung des Defects</label>
-            <textarea class="form-control description" rows="8" ng-model="defect.description" ng-minlength="1" required></textarea>
+            <textarea class="form-control
+            description" rows="8"
+                      ng-model="defect.description"
+                      ng-minlength="1"
+                      required></textarea>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-success">Ticket erstellen</button>
-            <button class="btn btn-primary" ng-click="switchToHome()">Zurück zur vorherigen Seite</button>
+            <button type="submit"
+                    class="btn btn-success">
+                Ticket erstellen
+            </button>
+            <button class="btn btn-primary"
+                    ng-click="switchToHome()">
+                Zurück zur vorherigen Seite
+            </button>
         </div>
-
     </form>
 </body>
 </html>

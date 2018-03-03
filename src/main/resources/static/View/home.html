@@ -38,7 +38,8 @@
     </button>
 </div>
 <div>
-    <table datatable="ng" class="table row-border hover">
+    <table datatable="ng"
+           class="table row-border hover">
         <thead>
         <tr>
             <th>ID</th>
@@ -58,7 +59,12 @@
             <td>{{ defect.creationDate }}</td>
             <td>{{ defect.creator.username }}</td>
             <td>{{ defect.status }}</td>
-            <td><button class="btn btn-success" ng-click="switchToDetails(defect)">Bearbeiten</button> </td>
+            <td>
+                <button class="btn btn-success"
+                        ng-click="switchToDetails(defect)">
+                    Bearbeiten
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>

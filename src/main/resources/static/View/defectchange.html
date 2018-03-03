@@ -11,7 +11,8 @@
 </head>
 <body>
     <form>
-        <div class="form-group" ng-repeat="change in defect.changes">
+        <div class="form-group"
+             ng-repeat="change in defect.changes">
             <p>Bearbeiter: {{change.editor.username}}</p>
             <p>Geändert: {{change.changeTime}}</p>
             <p>Ticket von {{change.previousStatus}} auf {{change.newStatus}} gesetzt.</p>
@@ -20,7 +21,10 @@
         </div>
         <div class="form-group">
             <label for="changeComment">Kommentarfeld</label>
-            <textarea class="form-control" id="changeComment" rows="10" ng-model="defectChange.comment"></textarea>
+            <textarea class="form-control"
+                      id="changeComment"
+                      rows="10"
+                      ng-model="defectChange.comment"></textarea>
         </div>
         <div class="btn-group">
             <button type="button"
@@ -59,6 +63,5 @@
             </button>
         </div>
     </form>
-
 </body>
 </html>

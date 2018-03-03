@@ -25,7 +25,7 @@
                            class="form-control"
                            id="defectDetailId"
                            ng-model="defect.id"
-                           ng-disabled="true">
+                           readonly>
                 </div>
                 <div class="form-group">
                     <label for ="defectDetailTitle">Betreff</label>
@@ -33,7 +33,7 @@
                            class="form-control"
                            id="defectDetailTitle"
                            ng-model="defect.title"
-                           ng-disabled="true">
+                           readonly>
                 </div>
                 <div class="form-group">
                     <label for="defectDetailCreator">Ersteller</label>
@@ -41,7 +41,7 @@
                            class="form-control"
                            id="defectDetailCreator"
                            ng-model="defect.creator.username"
-                           ng-disabled="true">
+                           readonly>
                 </div>
                 <div class="form-group">
                     <label for="defectDetailDate">Erstellt</label>
@@ -49,7 +49,7 @@
                            class="form-control"
                            id="defectDetailDate"
                            ng-model="defect.creationDate"
-                           ng-disabled="true">
+                           readonly>
                 </div>
                 <div class="form-group">
                     <label for="defectDetailDescription">Beschreibung</label>
@@ -57,7 +57,7 @@
                               class="form-control"
                               id="defectDetailDescription"
                               ng-model="defect.description"
-                              ng-disabled="true"></textarea>
+                              readonly></textarea>
                 </div>
                 <div class="form-group">
                     <label for="defectDetailStatus">Status</label>
@@ -65,7 +65,7 @@
                            class="form-control"
                            id="defectDetailStatus"
                            ng-model="defect.status"
-                           ng-disabled="true">
+                           readonly>
                 </div>
                 <hr>
                 <div class="btn-group">
@@ -98,11 +98,15 @@
             <h4>Verlauf des Tickets</h4>
             <hr>
             <div class="form-group scrollHistory">
-                <div class="form-group" ng-repeat="change in previousChanges">
+                <div class="form-group"
+                     ng-repeat="change in previousChanges">
                     <p>Bearbeiter: {{change.editor.username}}</p>
                     <p>Geändert: {{change.changeTime}}</p>
                     <p>Ticket von {{change.previousStatus}} auf {{change.newStatus}} gesetzt.</p>
-                    <textarea readonly class="form-control">{{change.comment}}</textarea>
+                    <textarea class="form-control"
+                              readonly>
+                        {{change.comment}}
+                    </textarea>
                     <hr>
                 </div>
             </div>
