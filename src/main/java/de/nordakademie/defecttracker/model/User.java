@@ -20,14 +20,7 @@ public class User {
     private String name;
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "userIdGenerator"
-    )
-    @SequenceGenerator(
-            name = "userIdGenerator",
-            initialValue = 1000
-    )
+    @GeneratedValue
     public Long getId() {
         return id;
     }
