@@ -82,7 +82,7 @@ public class DefectServiceImpl implements DefectService {
                 throw new DefectChangeNotAllowedException(lastEditor, newStatus, false);
             }
         } else if (defectStatus == REJECTED || defectStatus == RESOLVED) {
-            if (newStatus != RESOLVED && newStatus != CLOSED) {
+            if (newStatus != REOPENED && newStatus != CLOSED) {
                 throw new DefectChangeNotAllowedException(defectStatus, newStatus);
             }
             User defectCreator = defect.getCreator();
