@@ -24,7 +24,7 @@ app.controller('DefectChangeController', function($scope, $http, $location, defe
                 switchToHome();
             }, function errorCallback(data, status , header) {
                 console.error(data, status, header);
-                alert("Hoppla, bitte kontrollieren Sie Ihre Eingaben und versuchen Sie es erneut!");
+                alert("Ein Fehler ist aufgetreten!");
             })
     };
 
